@@ -1,82 +1,91 @@
-import Phaser from 'phaser'
-import { color } from 'three/webgpu'
+import Phaser from "phaser";
+import { color } from "three/webgpu";
 
 // File Constants
-const WIDTH : number = 1130
-const HEIGHT : number = 850
+const WIDTH: number = 1130;
+const HEIGHT: number = 850;
 
 class MainScene extends Phaser.Scene {
-    // Constructor
-    constructor() {
-        super("MainScene")
-    }
+  // CLass Variables
+  private playerName: "" | Phaser.GameObjects.Text = "";
 
-    // Helper Function // TODO : Implement this
+  // Constructor
+  constructor() {
+    super("MainScene");
+  }
 
-    // Preload
-    preload() : void {
-        this.load.image("board", "board.png")
-        this.load.image("charCard", "CharacterCard-Back.png")
-    }
+  // Helper Function // TODO : Implement this
 
-    // Create
-    create() : void {
-        // Adding Board
-        const gameBoard = this.add.image(WIDTH / 2, HEIGHT / 2, "board").setScale(0.125)
-        const card = this.add.image(WIDTH / 2 + 312, HEIGHT / 2, "charCard").setScale(0.125)
-        const graphics = this.add.graphics()
+  // Preload
+  preload(): void {
+    this.load.image("board", "board.png");
+    this.load.image("charCard", "CharacterCard-Back.png");
+  }
 
-        // User Cards Filller
-        graphics.fillStyle(0xffa500); // Orange color
-        const userCard1 = graphics.fillRect(2845, 4625, card.width, card.height).setScale(0.125)
-        const userCard2 = graphics.fillRect(2845 + 1290, 4625, card.width, card.height).setScale(0.125)
-        const userCard3 = graphics.fillRect(2845 + 1290 + 1275, 4625, card.width, card.height).setScale(0.125)
+  // Create
+  create(): void {
+    // Adding Board
+    const gameBoard = this.add
+      .image(WIDTH / 2, HEIGHT / 2, "board")
+      .setScale(0.125);
+    const card = this.add
+      .image(WIDTH / 2 + 312, HEIGHT / 2, "charCard")
+      .setScale(0.125);
+    const graphics = this.add.graphics();
 
-        // Enemy Cards Filler
-        graphics.fillStyle(0x991144); // Orange color
-        const enemyCard1 = graphics.fillRect(2845, 1140, card.width, card.height).setScale(0.125)
-        const enemyCard2 = graphics.fillRect(2845 + 1290, 1140, card.width, card.height).setScale(0.125)
-        const enemyCard3 = graphics.fillRect(2845 + 1290 + 1275, 1140, card.width, card.height).setScale(0.125)
+    // User Cards Filller
+    graphics.fillStyle(0xffa500); // Orange color
+    const userCard1 = graphics
+      .fillRect(2845, 4625, card.width, card.height)
+      .setScale(0.125);
+    const userCard2 = graphics
+      .fillRect(2845 + 1290, 4625, card.width, card.height)
+      .setScale(0.125);
+    const userCard3 = graphics
+      .fillRect(2845 + 1290 + 1275, 4625, card.width, card.height)
+      .setScale(0.125);
 
-        // Time elapsed
-        const elapsedTime = this.add.text(525, 20, "00:20:12").setFontSize(20)
+    // Enemy Cards Filler
+    graphics.fillStyle(0x991144); // Orange color
+    const enemyCard1 = graphics
+      .fillRect(2845, 1140, card.width, card.height)
+      .setScale(0.125);
+    const enemyCard2 = graphics
+      .fillRect(2845 + 1290, 1140, card.width, card.height)
+      .setScale(0.125);
+    const enemyCard3 = graphics
+      .fillRect(2845 + 1290 + 1275, 1140, card.width, card.height)
+      .setScale(0.125);
 
-        // Adding
-        this.add.text(50, 100, "Player Name")
-        
+    // Time elapsed
+    const elapsedTime: Phaser.GameObjects.Text = this.add
+      .text(525, 20, "00:20:12")
+      .setFontSize(20);
 
-        
-    }
+    // Adding
+    this.playerName = this.add.text(50, 100, "Player Name");
+  }
 
-    // Update
-    update(): void {
-        
-    }
+  // Update
+  update(): void {}
 }
 
 const config: Phaser.Types.Core.GameConfig = {
-    type: Phaser.AUTO,
-    width: WIDTH,
-    height: HEIGHT,
-    backgroundColor: "#2d2d2d",
-    scene: [MainScene],
-    parent: 'game-container', // Match the ID in the HTML file
-    physics: {
-        default: 'arcade',
-        arcade: {
-            debug: false,
-        },
+  type: Phaser.AUTO,
+  width: WIDTH,
+  height: HEIGHT,
+  backgroundColor: "#2d2d2d",
+  scene: [MainScene],
+  parent: "game-container", // Match the ID in the HTML file
+  physics: {
+    default: "arcade",
+    arcade: {
+      debug: false,
     },
-}
+  },
+};
 
-const game = new Phaser.Game(config)
-
-
-
-
-
-
-
+const game = new Phaser.Game(config);
 
 // import { CardShowcase } from './scenes/threeScene'
 

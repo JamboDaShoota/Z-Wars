@@ -1,5 +1,4 @@
 import { Skill } from "./skill";
-import { Player } from "./player";
 
 
 // Character Definition
@@ -12,9 +11,8 @@ export class Character {
   private skills: [Skill];
   private tags: [string] | string;
   private blocking: boolean = true; // No constructor assignment needed
-  private maxHP: number = 0; // Will be reassigned after construction
-  private enemy: Character | Player = new Player() // Fill in Enemy
-  private owner: Player = new Player() // Fill in player
+  private maxHP : number = 0; // Will be reassigned after construction
+  private enemy : string = "";
   // TODO : Code out the enemy and owner associated function
 
 

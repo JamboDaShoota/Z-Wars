@@ -4,9 +4,9 @@ import { Skill } from "./skill";
 import { shuffleArray } from "../utils";
 import { Player } from "./player";
 // Deck Definition
-class Deck {
+export class Deck {
   // Instance Variables
-  private characterCards: Character[] = [
+private characterCards: Character[] = [
     new Character(
       "Goku",
       15000,
